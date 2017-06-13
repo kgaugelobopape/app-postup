@@ -9,7 +9,7 @@ export class CoreService {
   
   constructor() {
     this.articles = this.baseUrl + '/articles';
-    this.sources = this.baseUrl + '/source';
+    this.sources = this.baseUrl + '/sources';
     this.apiKey = 'dcf4480f211c48fa943c3b28ba798ef7';
   }
 }
