@@ -5,6 +5,7 @@ import {NavigationComponent} from './components/navigation/navigation.component'
 import {LoaderComponent} from './components/loader/loader.component';
 import {ContainerComponent} from './components/container/container.component';
 import {routes} from './core.router';
+import {CoreGlobals} from './core.globals';
 
 @NgModule({
   imports: [
@@ -12,7 +13,7 @@ import {routes} from './core.router';
     routes
   ],
   declarations: [NavigationComponent, LoaderComponent, ContainerComponent],
-  providers: [CoreService],
+  providers: [CoreService, CoreGlobals],
   exports : [NavigationComponent, LoaderComponent, ContainerComponent]
 })
 export class CoreModule {
