@@ -1,10 +1,10 @@
 import {Routes} from '@angular/router';
 import {DashboardComponent} from '../components/dashboard/dashboard.component';
-import {SourcesComponent} from '../components/sources/sources.component';
+import {SourcesListComponent} from '../components/sources/sources-list/sources-list.component';
 
 export const appRoutes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'home', component: DashboardComponent},
-  {path: 'sources', component: SourcesComponent},
+  {path: 'sources/:id', component: SourcesListComponent},
   {path: '**', redirectTo: '404', pathMatch: 'full'}
 ]

@@ -1,12 +1,15 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
+import {HttpModule} from '@angular/http';
+import {FormsModule} from '@angular/forms';
 import {DashboardComponent} from './dashboard.component';
+import {CoreService} from '../../core/core.service';
 
 @NgModule({
-  imports: [CommonModule],
+  imports: [CommonModule, HttpModule, FormsModule],
   declarations: [DashboardComponent],
-  providers: [],
-  exports: [DashboardComponent]
+  providers: [CoreService],
+  exports: [DashboardComponent, FormsModule]
 })
-export class DashboardModue {
+export class DashboardModule {
 }
