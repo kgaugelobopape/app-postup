@@ -18,4 +18,7 @@ export class SourcesComponent implements OnInit {
       this.sources = response.sources;
     });
   }
+  
+  presentFilter() {
+  }
 }

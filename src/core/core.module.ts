@@ -14,7 +14,7 @@ import {FormsModule} from '@angular/forms';
   imports: [
     CommonModule,
     RouterModule.forRoot(appRoutes),
-    FormsModule
+    FormsModule,
   ],
   declarations: [NavigationComponent, LoaderComponent, ContainerComponent, SourcesComponent],
   providers: [CoreService, CoreGlobals],

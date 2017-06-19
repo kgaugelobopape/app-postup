@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {CoreService} from '../../core/core.service';
-import * as _ from 'underscore';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,25 +8,21 @@ import * as _ from 'underscore';
 })
 export class DashboardComponent implements OnInit {
   title = 'PostUp';
-  sources: any = [];
-  queryText: string;
+  articles: any;
   
   constructor(private _service: CoreService) { }
-
+  
   ngOnInit() {
-    this.updateSource();
+    this.getTopArticles();
   }
   
-  updateSource() {
+  getTopArticles() {
+    let item: any;
     this._service.getSources().subscribe((response) => {
-      this.sources = response.sources;
+      item = response.sources[Math.floor(Math.random() * response.sources.length)];
+      this._service.getArticlesBySourceId(item.id).subscribe((res) => {
+        this.articles = res.articles;
+      });
     });
   }
-  
-  presentFilter() {
-  
-    this.sources = _.where(this.sources, {name: this.queryText});
-  }
-  
-  go
 }
