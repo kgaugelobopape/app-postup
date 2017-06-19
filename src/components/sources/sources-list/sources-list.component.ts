@@ -10,6 +10,7 @@ import {CoreService} from '../../../core/core.service';
 export class SourcesListComponent implements OnInit, OnDestroy {
   id: string;
   articles: any;
+  article: Object;
   private sub: any;
   sortBy: string;
   
@@ -32,8 +33,8 @@ export class SourcesListComponent implements OnInit, OnDestroy {
     });
   }
   
-  getArticleContent(article: any) {
-    console.log(article);
+  getArticleContent(article: Object) {
+    this.article = article;
   }
   
   ngOnDestroy() {

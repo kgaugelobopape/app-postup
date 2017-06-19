@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-sources-modal',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sources-modal.component.css']
 })
 export class SourcesModalComponent implements OnInit {
-
-  constructor() { }
+  @Input() article: any;
+  url: SafeResourceUrl;
+  constructor(private sanitizer: DomSanitizer) { }
 
   ngOnInit() {
+    this.url = this.sanitizer.bypassSecurityTrustResourceUrl(this.article.url);
   }
-
 }

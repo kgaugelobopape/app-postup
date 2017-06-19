@@ -16,7 +16,7 @@
         </div>
         <div class="col-md-8">
           <h2>
-            <a href="{{ article.url }}" (click)="getArticleContent(article)">{{ article.title }}</a>
+            <a (click)="getArticleContent(article)" data-toggle="modal" data-target="#myModal">{{ article.title }}</a>
           </h2>
           <p>{{ article.description }}</p>
         </div>
@@ -25,3 +25,4 @@
     </div>
   </div>
 </div>
+<app-sources-modal [article]="article" *ngIf="article"></app-sources-modal>
