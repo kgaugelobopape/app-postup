@@ -10,11 +10,19 @@ export class CoreService {
   }
   
   getSources(): Observable<any> {
-    return this.http.get(this._constant.sources).map((res: Response) => res.json());
+    if (this._constant.debug) {
+      return this.http.get('../assets/data/sources.json').map((res: Response) => res.json());
+    } else {
+      return this.http.get(this._constant.sources).map((res: Response) => res.json());
+    }
   }
   
   getArticlesBySourceId(id: string) {
-    const url = this._constant.articles + '?source=' + id + '&apikey=' + this._constant.apiKey;
-    return this.http.get(url).map((res: Response) => res.json());
+    if (this._constant.debug) {
+      return this.http.get('../assets/data/articles.json').map((res: Response) => res.json());
+    } else {
+      const url = this._constant.articles + '?source=' + id + '&apikey=' + this._constant.apiKey;
+      return this.http.get(url).map((res: Response) => res.json());
+    }
   }
 }
