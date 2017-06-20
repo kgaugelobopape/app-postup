@@ -3,26 +3,41 @@
 </div>
 
 <div class="row" *ngIf="articles?.length > 0">
-  <div class="col-sm-12 sm-margin-bottom-40" *ngFor="let article of articles">
-    <div class="funny-boxes funny-boxes-top-sea">
-      <div class="row">
-        <div class="col-md-2 funny-boxes-img">
-          <img class="img-responsive" src="{{ article.urlToImage }}" alt="">
-          <ul class="list-unstyled">
-            <li *ngIf="article.author"><i class="fa-fw fa fa-user"></i> {{ article.author }}</li>
-            <li *ngIf="article.publishedAt"><i class="fa-fw fa fa-clock-o"></i> {{ article.publishedAt | date:'longDate' }}
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-8">
-          <h2>
-            <a (click)="getArticleContent(article)" data-toggle="modal" data-target="#myModal">{{ article.title }}</a>
-          </h2>
-          <p>{{ article.description }}</p>
-        </div>
-        <div class="col-md-2">Test</div>
-      </div>
+  <div class="col-sm-12 margin-bottom-10">
+    <div class="btn-group" role="group" aria-label="...">
+      <a class="btn btn-default btn-xs disabled">Sort By:</a>
+      <a class="btn btn-default btn-xs" (click)="onLoadSortOrder(sort)" *ngFor="let sort of sortBy">{{sort | uppercase}}</a>
     </div>
+  </div>
+  
+  <div class="col-sm-12">
+      <div class="row">
+        <div class="col-md-10">
+            <div class="row">
+              <div class="col-md-6" *ngFor="let article of articles">
+                <div class="panel panel-default-dark">
+                  <div class="panel-body">
+                    <a href="{{ article.url}}" target="_blank">
+                      <img class="img-responsive center-block" src="{{ article.urlToImage }}" alt="">
+                    </a>
+                  </div>
+                  <div class="panel-footer">
+                    <h5 class="panel-title">{{ article.title }}</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="panel panel-sea">
+            <div class="panel-body">
+              <iframe style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0"
+                      src="//ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=mantwa-20&marketplace=amazon&region=US&placement=B01BTTUC2Q&asins=B01BTTUC2Q&linkId=78fe90e0185947f5f67b523c2863557b&show_border=true&link_opens_in_new_window=false&price_color=333333&title_color=0066c0&bg_color=ffffff">
+              </iframe>
+            </div>
+          </div>
+        </div>
+      </div>
   </div>
 </div>
 <app-sources-modal [article]="article" *ngIf="article"></app-sources-modal>

@@ -3,42 +3,23 @@
 </div>
 
 <div class="row" *ngIf="articles?.length > 0">
-  <div class="col-sm-12 sm-margin-bottom-40" *ngFor="let article of articles, let i = index">
-    <div class="row" *ngIf="i == 0">
-      <div class="col-sm-6 sm-margin-bottom-20">
-        <img class="img-responsive" src="{{ article.urlToImage }}" alt="">
-      </div>
-      <div class="col-sm-6 news-v3">
-        <div class="news-v3-in-sm no-padding">
-          <ul class="list-inline posted-info">
-            <li>By {{ article.author }}</li>
-            <li>Posted {{ article.publishedAt | date:'longDate' }}</li>
-          </ul>
-          <h2><a href="#">{{ article.title }}</a></h2>
-          <p>{{ article.description }}</p>
+  <div class="col-md-10">
+    <div class="row">
+      <div class="col-sm-6 sm-margin-bottom-40" *ngFor="let article of articles">
+        <div class="panel panel-default-dark">
+          <div class="panel-body">
+            <a href="{{ article.url}}" target="_blank">
+              <img class="img-responsive center-block" src="{{ article.urlToImage }}" alt="">
+            </a>
+          </div>
+          <div class="panel-footer">
+            <h5 class="panel-title">{{ article.title }}</h5>
+          </div>
         </div>
       </div>
     </div>
-
-    <div class="funny-boxes funny-boxes-top-sea" *ngIf="i > 0">
-      <div class="row">
-        <div class="col-md-2 funny-boxes-img">
-          <img class="img-responsive" src="{{ article.urlToImage }}" alt="">
-          <ul class="list-unstyled">
-            <li *ngIf="article.author"><i class="fa-fw fa fa-user"></i> {{ article.author }}</li>
-            <li *ngIf="article.publishedAt"><i class="fa-fw fa fa-clock-o"></i> {{ article.publishedAt | date:'longDate'
-              }}
-            </li>
-          </ul>
-        </div>
-        <div class="col-md-10">
-          <h2>
-            <a href="{{ article.url }}" (click)="getArticleContent(article)">{{ article.title }}</a>
-          </h2>
-          <p>{{ article.description }}</p>
-        </div>
-      </div>
-    </div>
-
+  </div>
+  <div class="col-md-2">
+  
   </div>
 </div>

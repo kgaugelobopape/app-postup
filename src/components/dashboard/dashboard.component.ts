@@ -9,8 +9,9 @@ import {CoreService} from '../../core/core.service';
 export class DashboardComponent implements OnInit {
   title = 'PostUp';
   articles: any;
+  article: Object;
   
-  constructor(private _service: CoreService) { }
+  constructor(private _service: CoreService) {}
   
   ngOnInit() {
     this.getTopArticles();
@@ -20,9 +21,13 @@ export class DashboardComponent implements OnInit {
     let item: any;
     this._service.getSources().subscribe((response) => {
       item = response.sources[Math.floor(Math.random() * response.sources.length)];
-      this._service.getArticlesBySourceId(item.id).subscribe((res) => {
+      this._service.getArticlesBySourceId(item.id, 'top').subscribe((res) => {
         this.articles = res.articles;
       });
     });
+  }
+  
+  getArticleContent(article: Object) {
+    this.article = article;
   }
 }

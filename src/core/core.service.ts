@@ -17,11 +17,15 @@ export class CoreService {
     }
   }
   
-  getArticlesBySourceId(id: string) {
+  getArticlesBySourceId(id: string, sort: string) {
+    let sortBy = '';
     if (this._constant.debug) {
       return this.http.get('../assets/data/articles.json').map((res: Response) => res.json());
     } else {
-      const url = this._constant.articles + '?source=' + id + '&apikey=' + this._constant.apiKey;
+      if (sort !== '') {
+        sortBy = '&sortBy=' + sort;
+      }
+      const url = this._constant.articles + '?source=' + id + '&apikey=' + this._constant.apiKey + sortBy;
       return this.http.get(url).map((res: Response) => res.json());
     }
   }

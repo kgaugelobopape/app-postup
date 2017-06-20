@@ -22,19 +22,23 @@ export class SourcesListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.sub = this.router.params.subscribe(params => {
       this.id = params['id'];
-      this.getArticlesBySourceId(params['id']);
+      this.getArticlesBySourceId(params['id'], '');
     });
   }
   
-  getArticlesBySourceId(id: string) {
-    this._coreService.getArticlesBySourceId(id).subscribe((response) => {
+  getArticlesBySourceId(id: string, sort: string) {
+    this._coreService.getArticlesBySourceId(id, sort).subscribe((response) => {
       this.articles = response.articles;
-      this.sortBy = response.sortBy;
+      this.sortBy = response.sortBy.split(',');
     });
   }
   
   getArticleContent(article: Object) {
     this.article = article;
+  }
+  
+  onLoadSortOrder(item: string) {
+    this.getArticlesBySourceId(this.id, item);
   }
   
   ngOnDestroy() {

@@ -1,7 +1,7 @@
 <div class="list-group">
   <input
     [(ngModel)]="queryText"
-    (keydown)="presentFilter()"
+    (keyup)="presentFilter($event.target.value)"
     class="list-group-item form-control"
     placeholder="filter sources list">
   <a href="" class="list-group-item" *ngFor="let item of sources" [routerLink]="['/sources', item.id]" routerLinkActive="active">
