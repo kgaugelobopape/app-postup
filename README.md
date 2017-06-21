@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Setting up the Project
 
-###1. First install the node modules:
+### First install the node modules:
 
     npm install
 This will install all the dev dependencies required to build the project.
